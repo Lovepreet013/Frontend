@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <h3>sizing</h3>
+    <label>
+        Turn on intrinsic switch <input type="checkbox" class="toggle__element" id="intrinsic-switch">
+    </label>
+    <p class="awesome" data-element="awesome">CSS is Awesome</p>
+
+    <article>
+        <p>I want to be red and larger than the other text.</p>
+        <p>I want to be normal sized and the default color.</p>
+    </article>
+
+    <p data-type="primary">Data type primary </p>
+
+    <ul>
+        <li>1</li>
+        <li>1</li>
+        <li>1</li>
+    </ul>
+
+    <div class="top box">
+        <p>I have no margin because I am the first child.</p>
+        <p>
+          I have <code>margin-top</code> because I am a <strong>next sibling</strong>.
+        </p>
+        <p>I am also a <strong>next sibling</strong>, so also get margin top.</p>
+    </div>
+
+    <article>
+        <label class="toggle" for="toggle-element">
+            <span class="toggle__label">Our custom toggle switch</span>
+            <input type="checkbox" role="switch" class="toggle__element" id="toggle-element" />
+            <div class="toggle__decor" aria-hidden="true">
+                Hello
+              <div class="toggle__thumb"></div>
+            </div>
+        </label>
+    </article>
+
+    <div class="my-element"></div>
+
+    <div class="relative">
+        <p>This is sticky paragraph.</p>
+    </div>
+
+    <h2>Grid</h2>
+
+    <div class="container">
+        <div class="item">item 1</div>
+        <div class="item">item 2</div>
+        <div class="item">item 3</div>
+        <div class="item">item 4</div>
+        <div class="item">item 5</div>
+    </div>
+
+
+    <div class="controls">
+        <p>Try changing the value</p>
+        <select id="switcher">
+            <option value="auto">auto</option>
+            <option value="min-content">min-content</option>
+            <option value="max-content">max-content</option>
+            <option value="fit-content(7em)">fit-content(7em)</option>
+        </select>
+    </div>
+
+    <div class="container2">
+        <div class="item">item 1</div>
+        <div class="item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, explicabo.</div>
+        <div class="item">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam voluptatum nihil suscipit soluta odio dolorum? Nemo nisi enim deleniti illo.</div>
+        <div class="item">item 4</div>
+        <div class="item">item 5</div>
+    </div>
+
+    <div class="container3">
+        <div class="box">item 1</div>
+        <div class="box">item 2</div>
+        <div class="box">item 3</div>
+        <div class="box">item 4</div>
+        <div class="box">item 5</div>
+        <div class="box">item 6</div>
+        <div class="box">item 7</div>
+        <div class="box">item 8</div>
+    </div>
+
+    <div class="controls2">
+        <p>Try Changing the value</p>
+        <select id="switcher2">
+            <option value="auto-fill">auto-fill</option>
+            <option value="auto-fit">auto-fit</option>
+        </select>
+    </div>
+
+    <div class="container4">
+        <div class="box">Item 1</div>
+        <div class="box">Item 2</div>
+    </div>
+
+
+    <h2>Grid Dense and Sparse Packing</h2>
+
+    <div class="controls3">
+        <span>Turn on dense packing</span>
+        <input type="checkbox" id="switcher3"/>
+    </div>
+
+    <div class="container5" id="container5">
+        <div class="box span-row">Item one</div>
+        <div class="box">Item two</div>
+        <div class="box span-col">Item three has more text </div>
+        <div class="box">Item four</div>
+        <div class="box">Item five</div>
+    </div>
+
+    <h2>Grid Stacking</h2>
+
+    <div class="controls4">
+        <span>Switch “item one” to have a z-index of 2</span>
+        <input type="checkbox" id="switcher4"/>
+    </div>
+
+    <div class="container6" id="container6">
+        <div class="box">Item one</div>
+        <div class="box">Item two</div>
+        <div class="box">Item three has more text </div>
+        <div class="box">Item four</div>
+        <div class="box">Item five</div>
+    </div>
+
+    <h2>Creating layout using Naming grid areas👇</h2>
+    <div class="container7">
+        <header class="header">This is header</header>
+        <div class="sidebar">Sidebar</div>
+        <div class="content">Content</div>
+        <footer class="footer">This is Footer</footer>
+    </div>
+
+    <h2>Layout with grid-template-areas</h2>
+    <div class="container8" id="container8">
+        <div class="box item1">grid-area: header</div>
+        <div class="box item2">grid-area: sidebar</div>
+        <div class="box item3">grid-area: content</div>
+        <div class="box item4">grid-area: footer;</div>
+    </div>
+
+    <h3>Subgrid</h3>
+    <div class="gallery">
+        <figure class="gallery-item">
+          <img src="https://assets.codepen.io/150150/level-1.svg" alt="cabinet with 1 shelf" />
+          <figcaption>The parent grid sets the row sizing</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="https://assets.codepen.io/150150/level-2.svg" alt="cabinet with 2 shelves" />
+          <figcaption>Each <code>.gallery-item</code> is a grid</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="https://assets.codepen.io/150150/level-3.svg" alt="cabinet with 3 shelves" />
+          <figcaption><code>.gallery-item</code> spans 2 of the parent rows</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="https://assets.codepen.io/150150/level-4.svg" alt="cabinet with 4 shelves" />
+          <figcaption>subgrid is applied to <code>.gallery-item</code></figcaption>
+        </figure>
+    </div>
+
+
+
+    <div class="container9" id="container9">
+        <div class="box">1</div>
+
+        <div class="subgrid-container">
+          <div class="box featured-subgrid-item">Featured Subgrid item A</div>
+          <div class="box subgrid-item">Subgrid item B</div>
+          <div class="box subgrid-item">Subgrid item C</div>
+        </div>
+
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+        <div class="box">6</div>
+        <div class="box">7</div>
+        <div class="box">8</div>
+        <div class="box">9</div>
+        <div class="box">10</div>
+      </div>
+  </div>
+
+  <a href="subgrid.html">Subgrid Example</a>
+
+
+  <article>
+    <p>Lorem ipsum dolor sit amet consectetur <br/> adipisicing elit. Nisi, voluptates! Illum voluptatum laborum dolorem, consequuntur inventore explicabo ipsa consequatur itaque.</p>
+    <hr/>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, laboriosam.</p>
+  </article>
+
+  <main>
+    <h1>Margin Collapse</h1>
+    <div class="wrapper">
+      <article class="flow">
+        <div class="demo flow">
+          <h1>My Heading with teal margin</h1>
+          <p>
+            A paragraph of text that has margin on it. The margin is blue so you can see
+            it.
+          </p>
+        </div>
+        <label>
+          Set heading's bottom margin
+          <input type="range" value="2" min="2" max="10" />
+        </label>
+      </article>
+    </div>
+  </main>
+
+
+  <article>
+    <h1>This is Article Heading.</h1>
+    <p class="first-letter">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, veniam. Maiores earum iusto repellat magni distinctio aut aliquid minus atque. Quasi ea magnam fugit inventore! Assumenda distinctio quos iste vero.</p>
+  </article>
+
+  <figure class="callout">
+    <p>A callout with a nice, decorative icon. The icon is added with a <code>::before</code> pseudo-element, which sets inline SVG with <a href="https://css-tricks.com/lodge/svg/09-svg-data-uris/">a data URI</a>, via the <code>background</code> property.</p>
+  </figure>
+
+  <details>
+    <summary>Open for some more content</summary>
+    <p>
+      Maecenas sed diam eget risus varius blandit sit amet non magna. Sed posuere
+      consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem
+      lacinia quam venenatis vestibulum. Maecenas sed diam eget risus varius
+      blandit sit amet non magna. Morbi leo risus, porta ac consectetur ac,
+      vestibulum at eros. Donec sed odio dui. Praesent commodo cursus magna, vel
+      scelerisque nisl consectetur et. Cum sociis natoque penatibus et magnis dis
+      parturient montes, nascetur ridiculus mus. Aenean eu leo quam. Pellentesque
+      ornare sem lacinia quam venenatis vestibulum. Cras justo odio, dapibus ac
+      facilisis in, egestas eget quam. Nullam id dolor id nibh ultricies vehicula
+      ut id elit.
+    </p>
+  </details>
+
+  <div class="my-el"></div>
+  <div class="my-el2"></div>
+  <div class="my-el3">
+    <h1>Lovepreet Singh</h1>
+  </div>
+
+  <div class="my-el4"></div>
+  <div class="my-el5"></div>
+
+  <h1>Animation</h1>
+
+  <div class="pulser"></div>
+
+  <div class="my-el6">
+    <h1>Check this Blur</h1>
+
+    <img src="./Pic.png" alt="image">
+  </div>
+
+  <h1>Blend Modes</h1>
+
+  <div class="duotone">
+    <img src="Pic.png" alt="">
+  </div>
+  
+  <span>Turn on multiply blend mode</span>
+
+  <label class="toggle-switch">
+    <input type="checkbox" class="switch-input">
+    <span class="switch"></span>
+  </label>
+
+  <div class="demo2">
+    <img src="https://images.unsplash.com/photo-1517646450441-a0faf4152caf" alt="Red flowers on branches" class="img2" />
+  </div>
+
+  <div class="wrapper">
+    <p>Hover to show menu</p>
+    <div class="menu-item">Menu item 1</div>
+    <div class="menu-item">Menu item 2</div>
+    <div class="menu-item">Menu item 3</div>
+    <div class="menu-item">Menu item 4</div>
+    <div class="menu-item">Menu item 5</div>
+  </div>
+
+  <div>
+    <p>Transition ✔️</p>
+    <div class="square has-transition" tabindex="0"></div>
+  </div>
+
+  <div class="wrapper2">
+    <div class="emoji" tabindex="0">🐶</div>
+    <div class="emoji" tabindex="0">🐱</div>
+    <div class="emoji" tabindex="0">🐢</div>
+  </div>
+
+  <div class="wrapper3">
+    <div class="bubble" tabindex="0"></div>
+    <div class="bubble" tabindex="0"></div>
+    <div class="bubble" tabindex="0"></div>
+    <div class="bubble" tabindex="0"></div>
+    <div class="bubble" tabindex="0"></div>
+    <div class="bubble" tabindex="0"></div>
+    <div class="bubble" tabindex="0"></div>
+    <div class="bubble" tabindex="0"></div>
+    <div class="bubble" tabindex="0"></div>
+    <div class="bubble" tabindex="0"></div>
+    <div class="bubble" tabindex="0"></div>
+    <div class="bubble" tabindex="0"></div>
+    <div class="bubble" tabindex="0"></div>
+    <div class="bubble" tabindex="0"></div>
+    <div class="bubble" tabindex="0"></div>
+    <div class="bubble" tabindex="0"></div>
+    <div class="bubble" tabindex="0"></div>
+    <div class="bubble" tabindex="0"></div>
+    <div class="bubble" tabindex="0"></div>
+    <div class="bubble" tabindex="0"></div>
+    <div class="bubble" tabindex="0"></div>
+    <div class="bubble" tabindex="0"></div>
+    <div class="bubble" tabindex="0"></div>
+    <div class="bubble" tabindex="0"></div>
+    <div class="bubble" tabindex="0"></div>
+  </div>
+
+  <div id="demoBox">CSS</div>
+    <div id="keywordPanel" class="configuration-panel">
+  </div>
+
+  <div class="another-box has-glow">
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum, quae?</p>
+  </div>
+
+  <div class="sprite-animation"></div>
+</body>
+</html>

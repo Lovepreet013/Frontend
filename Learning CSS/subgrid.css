@@ -1,0 +1,134 @@
+/* Global Resets */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Root Variables */
+:root{
+    --primary-font: "Lexend Deca", sans-serif;
+    --secondary-font: "Big Shoulders Display", sans-serif;
+    --heading-color: #F2F2F2;
+    --font-color: #FFF;
+    --sedans-background: #E28625;
+    --suv-background: #006971;
+    --luxury-background: #004140;
+    --heading-font-size: 2.5rem;
+    --button-font-size: 0.9rem;
+    --default-padding: 1rem 0
+}
+
+/* Base Styles */
+html {
+    font-size: 16px;
+}
+  
+body {
+    font-family: var(--primary-font);
+    margin: 0 auto;
+    max-width: 920px;
+}
+
+/* Heading Styles */
+h3 {
+    font-family: var(--secondary-font);
+    color: var(--heading-color);
+    font-size: var(--heading-font-size);
+}
+
+/* Paragraph Styles */
+p{
+    font-family: var(--primary-font);
+    font-optical-sizing: auto;
+    font-weight: 200; 
+    color: var(--font-color);
+    padding: var(--default-padding);
+    line-height: 1.5;
+}
+
+/*  Footer  */
+footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    a {
+      text-decoration: none;
+    }
+}
+
+.cards-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: repeat(4, auto);
+    min-height: 31.25rem;
+    margin-top: 5.6rem;
+    button{
+        font-size: var(--button-font-size);
+        background: var(--font-color);
+        border: none;
+        padding: 0.5rem 1.5rem;
+        border-radius: 25px;
+        width: 70%;
+    }
+    &:hover {
+        cursor: pointer;
+        background: none;
+        color: var(--font-color);
+      }
+}
+
+/* All */
+.suvs,
+.sedans,
+.luxury {
+  padding: 3rem;
+  h3 {
+    font-size: var(--heading-font-size);
+    text-transform: uppercase;
+  }
+}
+/* Sedans */
+.sedans {
+  background-color: var(--sedans-background);
+  border-radius: 10px 0 0 10px;
+  button {
+    color: var(--sedans-background);
+  }
+}
+/* SUV */
+.suvs {
+  background-color: var(--suv-background);
+  button {
+    color: var(--suv-background);
+  }
+}
+/* Luxury */
+.luxury {
+  background-color: var(--luxury-background);
+  border-radius: 0 10px 10px 0;
+  button {
+    color: var(--luxury-background);
+  }
+}
+
+article{
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 4;
+}
+
+img {
+    grid-row: 1/2;
+}
+
+h3 {
+    grid-row: 2/3;
+}
+
+p {
+    grid-row: 3/4;
+}
+
+button {
+    grid-row: 4/5;
+}

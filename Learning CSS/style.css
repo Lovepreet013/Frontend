@@ -1,0 +1,912 @@
+:root {
+    --var-col: auto;
+    --var-repeat : auto-fill;
+    --var-packing : row;
+    --var-z-index: 0;
+    --heading-margin : 0;
+    --glow-stop-1: #ffc400;
+    --glow-stop-2: #ff9100;
+    --glow-stop-3: #f8682f;
+    --glow-stop-4: #e62c6d;
+    --glow-stop-5: #b25aff;
+
+}
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.awesome{
+    text-transform: uppercase;
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 1;
+    border : 5px solid;
+    padding: 2rem;
+    margin: 0;
+
+    /*The important extrinsic width*/
+    width: 320px;
+}
+
+.awesome[data-sizing="intrinsic"] {
+    width: min-content;
+}
+
+/* article p:first-of-type {
+    color: red;
+    font-size: 1.5rem;
+} */
+
+[data-type="primary"]{
+    color: blue;
+}
+
+/* If a HTML element had a data-type of Primary, instead of primary, it would not get blue text. You can do the opposite—case insensitivity—by using an i operator. */
+[data-type="primary" s]{
+    color: blue;
+}
+
+/* A href that contains "example.com" */
+[href*='example.com'] {
+    color: red;
+}
+
+/* A href that starts with https */
+[href^='https'] {
+    color: green;
+}
+
+/* A href that ends with .com */
+[href$='.com'] {
+    color: blue;
+}
+
+/* Our link is hovered */
+a:hover {
+    outline: 1px dotted green;
+}
+  
+/* Sets all even paragraphs to have a different background */
+/* p:nth-child(even) {
+    background: floralwhite;
+} */
+
+/* Your list will now either have red dots, or red numbers */
+li::marker {
+    color: red;
+}
+
+/* You can also use ::selection to style the content that has been highlighted by a user. */
+::selection {
+    background: gray;
+    color: white;
+}
+
+/* Next sibling combinator  "+" */
+.top * + * {
+    margin-top: 1.5em;
+}
+
+/* 
+Subsequent- sibling combinator:
+A subsequent combinator is very similar to a next sibling selector. Instead of a + character however, use a ~ character. How this differs is that an element just has to follow another element with the same parent, rather than being the next element with the same parent. */
+:checked ~ .toggle__decor{
+    background: rebeccapurple;
+}
+
+/*Child combinator : > and * + * means direct child only */
+.top > * + * { 
+    margin-top: 1.5em;
+}
+
+/* Compound selectors
+You can combine selectors to increase specificity and readability. For example, to target <a> elements, that also have a class of .my-class, write the following: */
+a.my-class {
+    color: red;
+}
+
+.my-element {
+    width: 250px;
+    height: 250px;
+    background: linear-gradient(#778ca3, #4b6584);
+    border: 5px solid;
+    border-top-color: lightsteelblue;
+    border-right-color: lightsteelblue;
+    border-bottom-color: lightslategray;
+    border-left-color: slategray;
+    box-shadow: 0px 0px 20px rgb(0 0 0 / 30%);
+    border-radius: 10px;
+}
+
+.relative{
+    position: relative;
+    width: 500px;
+    height: 300px;
+    border: 1px solid black;
+}
+
+.relative p {
+    display: block;
+    position: sticky;
+    top: 0;
+    border: 1px solid red;
+}
+
+/*grid-template-columns: 5em 100px 30%; means grid have 3 cols each using different unit */
+/* grid-template-rows: 100px auto; means grid's first row have length of 100px and remaining will have auto length(height) */
+.container{
+    background-color: #778ca3;
+    display: grid;
+    grid-template-columns: 5em 100px 30%;
+    grid-template-rows: 100px auto;
+    gap: 10px;
+}
+
+.container > .item{
+    background-color: rgb(231, 164, 164);
+}
+
+.controls{
+    padding: 2em;
+}
+
+.container2{
+    display: grid;
+    grid-template-columns: repeat(3, var(--var-col));
+    grid-template-rows: 200px auto;
+    gap: 10px;
+    background-color: rgb(186, 205, 225);
+    padding: 1em;
+    max-width: 30rem;
+}
+
+.container2 > .item{
+    background-color: rgb(162, 141, 195);
+}
+
+.container3{
+    display: grid;
+    background-color: lightyellow;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    padding: 1em;
+    max-width: 70rem;
+    margin-block: 1em;
+}
+
+.container3 > .box{
+    background-color: cadetblue;
+    padding: 1em;
+}
+
+.container4{
+    background-color: cornflowerblue;
+    display: grid;
+    grid-template-columns: repeat(var(--var-repeat), minmax(100px, 1fr));
+    grid-template-rows: 200px auto;
+    gap: 10px;
+    padding: 1em;
+    max-width: 70rem;
+}
+
+.container4 > .box{
+    background-color: rgb(140, 180, 255);
+}
+
+/*The default behavior of grid layout is to place items along the rows. You can instead cause the items to place into columns using grid-auto-flow: column*/
+
+/*
+if you want to control the sizing of the rows, use the grid-auto-rows property, and for columns grid-auto-columns.
+To create all implicit rows at a minimum size of 10em and a maximum size of auto:
+.container {
+    display: grid;
+    grid-auto-rows: minmax(10em, auto);
+}
+*/
+.container5{
+    background-color: rgb(196, 132, 37);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: minmax(100px, auto);
+    grid-auto-flow: var(--var-packing);
+    gap: 10px;
+    padding: 1em;
+    max-width: 30rem;
+}
+
+.span-row{
+    grid-row: auto / span 2;
+}
+
+.span-col{
+    grid-column: auto / span 2; /* will span two lines, therefore covering two tracks, or for easy understanding can say cells*/
+}
+
+.container5 > .box{
+    background-color: rgb(231, 178, 72);
+}
+
+/*
+To place your item set the start and end lines of the grid area that it should be placed into. : 
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 200px 100px);
+}
+
+.item {
+    grid-column-start: 1;  start at column line 1 
+    grid-column-end: 4;  end at column line 4 
+    grid-row-start: 2; start at row line 2 
+    grid-row-end: 4;  end at row line 4 
+}
+or 
+
+.item{
+    grid-column : 1 / 4;
+    grid-row : 2 / 4;
+}
+*/
+
+.container6{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-flow: row;
+    grid-auto-rows: minmax(100px, auto);
+    gap: 10px;
+    background-color: #dadce0;
+    padding: .5em;
+    border-radius: 3px;
+    max-inline-size: 500px;
+}
+
+.container6 > .box{
+    z-index: 0;
+    background-color: #a6c4e8;
+}
+
+.container6 > .box:nth-child(1){
+    grid-row: 1 / 4;
+    grid-column: 1;
+    z-index: var(--var-z-index);
+    background-color: rgb(121, 121, 223);
+}
+
+.container6 > .box:nth-child(2){
+    grid-row: 1 / 3;
+    grid-column: 1 / -1;
+}
+.container6 > .box:nth-child(3){
+    grid-row: 2 / 4;
+    grid-column: 2 / -1;
+    background-color: rgb(116, 210, 215);
+}
+
+/*
+Sizing implicit tracks
+The tracks created in the implicit grid will be auto-sized by default. However if you want to control the sizing of the rows, use the grid-auto-rows property, and for columns grid-auto-columns.
+
+To create all implicit rows at a minimum size of 10em and a maximum size of auto:
+
+.container {
+    display: grid;
+    grid-auto-rows: minmax(10em, auto);
+}
+*/
+
+.header{
+    grid-area: header;
+    background-color: rgb(245, 130, 130);
+}
+.sidebar{
+    grid-area: sidebar;
+    background-color: rgb(121, 121, 248);
+}
+.content{
+    grid-area: content;
+    background-color: rgb(240, 52, 237);
+}
+.footer{
+    grid-area: footer;
+}
+
+.container7{
+    margin-block: 1em;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+    grid-template-areas: 
+        "header header header header"
+        "sidebar content content content"
+        "sidebar footer footer footer"
+    ;
+    background-color: rgb(129, 125, 127);
+    max-width: 30em;
+}
+
+.container8{
+    background-color: rgb(138, 115, 115);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: minmax(100px, auto);
+    grid-template-areas: 
+        "head head"
+        "cont cont"
+        "side foot"
+    ;
+    gap: 10px;
+    padding: .5em;
+    border-radius: 3px;
+    max-inline-size: 500px;
+}
+
+@media (min-width : 500px){ /*styles will applied when min-width is 500px*/
+    .container8{
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas:
+            "head head head"
+            "side cont cont"
+            "...... foot foot"
+        ;
+    }
+}
+.item1 {
+    grid-area: head;
+    background-color: darkcyan;
+}
+
+.item2 {
+    grid-area: side;
+    background-color: darkgreen;
+}
+
+.item3 {
+    grid-area: cont;
+    background-color: lemonchiffon;
+}
+
+.item4 {
+    grid-area: foot;
+    background-color: magenta;
+}
+
+.gallery{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 10em);
+    background-color: #778ca3;
+}
+
+.gallery-item{
+    background-color: #bec5ce;
+    display : grid;
+    grid-row: auto / span 2;
+    grid-template-rows: subgrid;
+}
+img{
+    align-self: end;
+}
+
+
+.container9{
+    margin-block: 1em;
+    display: grid;
+    gap: 1em;
+    grid-template-columns: auto 2fr 1fr auto;
+    grid-template-rows: 5fr 1fr 2fr 1fr;
+    background-color: rgb(147, 118, 118);
+}
+.container9 > .box{
+    background: lightblue;
+    border: thin solid black;
+    max-inline-size: none;
+}
+.subgrid-container{
+    background-color: rgb(231, 182, 122);
+    display: grid;
+    grid-column: auto / span 2;
+    grid-row: auto / span 3;
+
+    grid-template-columns: subgrid;
+    grid-template-rows: subgrid;
+}
+
+.featured-subgrid-item{
+    grid-column: span 2;
+    border: 1px solid black;
+}
+
+.subgrid-item{
+    grid-row: span 2;
+    border: 1px solid red;
+}
+
+
+.demo h1{
+    margin-bottom: var(--heading-margin, 2rem) ;
+}
+.demo p{
+    margin-top: 3rem;
+}
+
+/* :: for pseudo-elements, : for pseudo-classes */
+.first-letter::first-letter{
+    color: blue;
+    float: left;
+    font-size: 1.6em;
+    font-weight: bold;
+    line-height: 1;
+    margin-inline-end: 0.2rem;
+}
+
+.callout {
+    padding: 1rem 1rem 1rem 3rem;
+    background: #e8f0fe;
+    border: 1px solid #3740ff;
+    color: #272eb5;
+    position: relative;
+    max-width: 40rem;
+}
+
+.callout::before{
+    content: '';
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23272eb5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M14 9.5c0-.825.675-1.5 1.5-1.5h1c.825 0 1.5.675 1.5 1.5v1c0 .825-.675 1.5-1.5 1.5h-1c-.825 0-1.5-.675-1.5-1.5v-1zM20 24h-8v-2h2v-6h-2v-2h6v8h2z"/><path d="M16 0C7.163 0 0 7.163 0 16s7.163 16 16 16 16-7.163 16-16S24.837 0 16 0zm0 29C8.82 29 3 23.18 3 16S8.82 3 16 3s13 5.82 13 13-5.82 13-13 13z"/></svg>');
+    background-size: cover;
+    width: 1.25rem;
+    height: 1.25rem;
+    display: block;
+    position: absolute;
+    left: 1rem;
+}
+  
+.callout a {
+    color: #272eb5;
+    font-weight: bold;
+}
+
+details{
+    border: 1px solid black;
+    padding: 1em;
+}
+
+summary::marker {
+    content: '\002B'' '; /* Plus symbol with space */
+    font-weight: bolder;
+}
+
+details[open] summary::marker{
+    content: '\2212'' '; /* Minus symbol with space */
+}
+
+::selection{
+    background-color: purple;
+    color: white;
+}
+
+
+/* A pseudo-class lets you apply styles based on state changes and external factors. pseudo-classes hook onto specific states that an element might be in, rather than generally style parts of that element. */
+
+
+
+.my-el{
+    width: 200px;
+    height: 200px;
+    border: 2px solid;
+    margin-block: 1em;
+    /* border-radius: 95px 155px 148px 103px / 48px 95px 130px 103px; */
+    border-image-source: url(https://assets.codepen.io/174183/border-image-frame.jpg);
+    border-image-slice: 61 58 51 48;
+    border-image-width: 20px 20px 20px 20px;
+    border-image-outset: 0px 0px 0px 0px;
+    border-image-repeat: stretch stretch;
+    position: relative;
+}
+
+.my-el2 {
+    width: 200px;
+    height: 200px;
+    border: 5px solid; /* A larger border width is needed to see the effect */
+    margin-block: 1em;
+    border-image-source: linear-gradient(to bottom, #bc6262, #0f3ab1);
+    border-image-slice: 30; /* This is the missing piece! */
+}
+
+.my-el2{
+    box-shadow: 1px 2px 10px 1px #bf6767;
+}
+
+
+.my-el3 h1{
+    text-shadow:  1px 1px 0px rgb(255, 255, 255), /*First Shadow*/
+    2px 2px 0px firebrick; /*Second Shadow*/
+    color: darkslategray;
+    text-transform: uppercase;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 3em;
+    font-weight: 900;
+    max-width: 40ch;
+}
+
+
+.my-el4{
+    width: 250px;
+    height: 250px;
+
+    background: conic-gradient(
+        gold 20deg, lightcoral 20deg 190deg, mediumturquoise 190deg 220deg, plum 220deg 320deg, steelblue 320deg);
+    
+    border-radius: 50%;
+    border: 3px solid;
+}
+
+.my-el5{
+    width: 250px;
+    height: 250px;
+
+    background: repeating-linear-gradient(45deg, rgb(83, 187, 207), red 30px, white 30px, white 60px);
+    
+    border: 10px solid;
+}
+
+.pulser{
+    width: 30px;
+    height: 30px;
+    background: rebeccapurple;
+    border-radius: 50%;
+    position: relative;
+}
+
+.pulser::after{
+    animation: pulse 1000ms cubic-bezier(0.9, 0.7, 0.5, 0.9) infinite;
+}
+
+@keyframes pulse {
+    0%{
+        opacity: 0;
+    }
+
+    50%{
+        transform: scale(1.4);
+        opacity: 0.4;
+    }
+}
+
+.pulser::after{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: blueviolet;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+img{
+    width: 100%;
+}
+.my-el6 {
+    margin-block: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80vh;
+    max-height: 600px;
+    position: relative;
+}
+.my-el6 h1{
+    padding: 1.5em;
+    color: white;
+    background: hsla(0, 1%, 35%, 0);
+    backdrop-filter: blur(5px);
+    z-index: 1;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.my-el6 img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+
+.duotone{
+    max-width: 450px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.duotone::before,
+.duotone::after{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.duotone img{
+    filter: grayscale() brightness(110%);
+}
+
+.duotone::after{
+    background: hotpink;
+    mix-blend-mode: multiply;
+}
+/* 
+.duotone::before{
+    background: rgb(21, 21, 227);
+    mix-blend-mode: lighten;
+} */
+
+
+/* SWITCH---- */
+.toggle-switch{
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.toggle-switch input{
+    opacity: 0;
+    height: 0;
+    width: 0;
+}
+
+.switch{
+    position: absolute;
+    background: #56585c;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.switch::before{
+    content: '';
+    position: absolute;
+    background:#e4e5e6;
+    height: 20px;
+    width: 20px;
+    z-index: 1;
+    border-radius: 50%;
+
+    margin: 2px;
+    transition: 0.4s;
+}
+
+input:checked + .switch{
+    background-color: #3740ff;
+}
+
+input:checked + .switch::before{
+    transform: translateX(26px);
+}
+
+
+.demo2 {
+    border: 1px solid lightsteelblue;
+    border-radius: 0.5rem;
+    background: mistyrose;
+    max-width: 300px;
+    overflow: hidden;
+}
+.img2{
+    mix-blend-mode: normal;
+    filter: brightness(110%);
+}
+
+.wrapper{
+    display: flex;
+    padding: 0;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-item{
+    width: 150px;
+    max-height: 100px;
+    background-color: darkslateblue;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+    padding: 8px;
+    margin-bottom: 4px;
+
+    /* transform-origin: 0 0; */
+    transform: translateX(-100px);
+    opacity: 0;
+
+    transition-property: transform, opacity;
+    transition-duration: 1s;
+    transition-timing-function: ease;
+}
+
+.wrapper:is(:hover, :focus) .menu-item{
+    transform: translateX(0);
+    opacity: 100%;
+}
+
+.wrapper .menu-item:nth-of-type(1){
+    transition-delay: 0ms;
+}
+.wrapper .menu-item:nth-of-type(2) {
+    transition-delay: 100ms;
+}
+
+.wrapper .menu-item:nth-of-type(3) {
+    transition-delay: 200ms;
+}
+
+.wrapper .menu-item:nth-of-type(4) {
+    transition-delay: 300ms;
+}
+
+.wrapper .menu-item:nth-of-type(5) {
+    transition-delay: 400ms;
+}
+
+.wrapper p {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.square{
+    width: 100px;
+    height: 100px;
+    background-color: cornflowerblue;
+    border-radius: 8px;
+    margin: 4px ;
+
+    opacity: 0.5;
+    transform: scale(1) rotate(0);
+}
+
+.square{
+    transition: transform 750ms ease-in-out 0s;
+}
+
+.square:is(:hover, :focus){
+    transform: scale(1.5) rotate(135deg);
+}
+
+.wrapper2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.emoji{
+    font-size: 8em;
+    filter: grayscale(100%);
+    transition: filter 300ms ease;
+    cursor: pointer;
+}
+
+.emoji:is(:hover, :focus){
+    filter: grayscale(0%) drop-shadow(0 8px 8px rgba(0, 0, 0, 0.5));
+}
+
+.wrapper3 {
+    display: flex;
+    flex-wrap: wrap;
+    width: 470px;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.bubble{
+    width: 50px;
+    height: 50px;
+    background-color: aquamarine;
+    border-radius: 100%;
+    text-align: center;
+    padding: 16px;
+    font-size: 2em;
+    margin: 2px;
+
+    /* When not hovering, this transition is active */
+    transition: all 5s ease-in 100ms;
+}
+
+.bubble:is(:hover, :focus) {
+    background-color: paleturquoise;
+    transform: scale(1.6);
+    opacity: 0.6;
+  
+    /* This transition is active on hover */
+    transition: transform 150ms cubic-bezier(0.5, 1.75, 0.75, 1.25);
+}
+
+
+#demoBox{
+    border: 0.5px solid hsla(0deg, 0%, 60%, 0.5);
+    padding: 1rem;
+
+    font-family: "Google Sans", "Google Sans Text", Roboto, sans-serif;
+    font-size: 10rem;
+    font-weight: bold;
+    text-align: center;
+
+    background-image: url("https://images.unsplash.com/photo-1567095761054-7a02e69e5c43?auto=format&fit=crop&w=690&q=80");
+    background-size: contain;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+
+.another-box{
+    width: 200px;
+    height: min-content;
+    background: #a6c4e8;
+    padding: 2em;
+    margin-block: 1em;
+    margin-inline: auto;
+    position: relative;
+
+    border-radius: 10px;
+
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, .25);
+
+}
+.another-box::before{
+    content: '';
+    position: absolute;
+    inset: -3px;
+    transform: translate(0);
+    z-index: -1;
+    background: linear-gradient(135deg, var(--glow-stop-1) 0, var(--glow-stop-2) 25%, var(--glow-stop-3) 50%, var(--glow-stop-4) 75%, var(--glow-stop-5) 100%);
+
+    border-radius: 10px;
+
+    opacity: 0.5;
+    filter: blur(40px);
+}
+
+.another-box::after{
+    content: '';
+    position: absolute;
+    inset: -1.5px;
+    transform: translate(0);
+    z-index: -1;
+    background: linear-gradient(135deg, var(--glow-stop-1) 0, var(--glow-stop-2) 25%, var(--glow-stop-3) 50%, var(--glow-stop-4) 75%, var(--glow-stop-5) 100%);
+
+    border-radius: 10px;
+
+    /* opacity: 0.5;
+    filter: blur(40px); */
+}
+
+.sprite-animation {
+    width: 118px;
+    height: 204px;
+    background: url("logo.png")
+                no-repeat 0 0;
+    animation: play 1.6s steps(82) forwards;
+
+    transform: scale(0.5);   /* scale to 50% */
+    transform-origin: top left; /* anchor scaling */
+  }
+  
+  /* (frames - 1) * frameWidth = 82 * 118 = 9676px */
+  @keyframes play {
+    to { background-position: -9676px 0; }
+  }
