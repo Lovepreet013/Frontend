@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>This is a page title</title>
+</head>
+<body>
+	<div id="red" style="height: 400px; width: 400px; background: red;">
+		<div id="blue" style="height: 300px; width: 300px; background: blue;">
+			<div id="green" style="height: 200px; width: 200px; background: green;"></div>
+		</div>
+	</div>
+	<script>
+		const redEl = document.querySelector('#red');
+		const blueEl = document.querySelector('#blue');
+		const greenEl = document.querySelector('#green');
+
+        //Bubbling, as shown here, is the default behavior of any given event. Its behavior is to move an event up the DOM tree to the nodes above it, moving from child to parent until it hits the root. Parent nodes can respond to these events as expected, stop their upward motion on the tree, and more
+
+        // redEl.addEventListener('click', () => {
+        //     console.log("A click handled on red using bubbling.")
+        //     // This is set to false in order to use bubbling. We'll cover the `true` case later on
+        // }, false)
+
+        // blueEl.addEventListener('click', (event) => {
+        //     event.stopPropagation()
+        //     console.log('A click handled on blur using bubbling.')
+        // }, false)
+
+        // greenEl.addEventListener('click', () => {
+		// 	console.log("A click handled on green using bubbling");
+		// }, false)
+
+
+        //Bubbling isn't the only way events are able to move. Just as they can move up from the bottom, they can also move from the top down. This method of emitting events is known as capture mode.
+
+        redEl.addEventListener('click', () => {
+            console.log("A click handled on red using capturing");
+            // Setting true here will switch to capture mode
+        }, true)
+
+        blueEl.addEventListener('click', (event) => {
+            // Stop the click event from moving further down in the bubble
+            event.stopPropagation();
+            console.log("A click handled on blue using capturing");
+        }, true);
+
+        greenEl.addEventListener('click', () => {
+            console.log("A click handled on green using capturing");
+        }, true);
+
+	</script>
+</body>
+</html>

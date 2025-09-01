@@ -1,0 +1,72 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* input:invalid{  This make the border red without even the interaction of the user with the input field solution : user-invalid
+    border: 1px solid red;
+} */
+form{
+    max-width: 400px;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    flex-direction: column;
+}
+input:focus{
+    outline: 1px solid green;
+}
+input:user-invalid{
+    border: 1px solid red;
+}
+.validation-message {
+    /* display: block; */
+    padding-top: 0.4em;
+    color: red;
+}
+
+.visually-hidden {
+    position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+  }
+  
+  button {
+    margin-top: 1rem;
+  }
+  
+  .has-js::-ms-reveal {
+      display: none;
+  }
+  
+  .has-js::reveal {
+      display: none;
+  }
+  
+  .reveal-password {
+    padding: 0.2em 1em;
+    text-transform: capitalize;
+    border: none;
+    background: #555;
+    border-radius: 0;
+    display: inline-grid;
+    grid-template-columns: 1fr;
+    grid-template-rows:  1fr;
+    margin-top: 0;
+  }
+  
+  .reveal-password:before {
+    content: attr(data-text-show);
+    grid-area: 1 / 1;
+    height: 0px;
+    visibility: hidden;
+  }

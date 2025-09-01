@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <!-- To send or upload file using input type file, form tag needs to have attribute -> enctype="multipart/form-data" -->
+    <form>
+        <label for="name">Username</label>
+        <input type="text" name="name" id="name" autocomplete="name" required aria-describedby="name-validation" minlength="5">
+        <span id="name-validation" aria-live="assertive" class="validation-message"></span>
+
+        <!-- Show Password -->
+        <label for="password">Password</label>
+
+        <input required type="password" id="password" name="password" class="password-field">
+
+        <button type="button" hidden data-pressed="false" class="reveal-password" aria-controls="password" data-text-show="Show password" data-text-hide="Hide password">Show password</button>
+
+        <span data-text-shown="Your password is shown" data-text-hidden="Your password is hidden" class="visually-hidden password-announce" aria-live="polite"></span>
+
+        <!------------------------------>
+
+        <label for="pattern">This field have regular expression</label>
+        <input type="text" pattern="[a-z]{2,20}" name="pattern" id="pattern" required>
+
+        <label for="email">Email</label>
+        <input type="email" name="email" required autocomplete="email">
+
+        <label for="state">Select state</label>
+        <select name="state" id="state">
+            <option value="punjab" selected>Punjab</option>
+            <option value="tamil nadu">Tamil Nadu</option>
+            <option value="karnataka">Karnataka</option>
+        </select>
+
+        <button>Submit</button>
+    </form>
+</body>
+</html>

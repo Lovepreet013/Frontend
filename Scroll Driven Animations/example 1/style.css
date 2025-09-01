@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background: red;
+
+    z-index: 2;
+
+    animation: grow-progress linear forwards;
+    animation-timeline: scroll();  /*this always need to be after the animation(above) property. "animation-timeline" property allow us to specity a timeline that controls the animaiton's progress. "scroll()" func. create the scroll timeline, automatically setup to track the nearest ancestor scroller in the block direction.  */
+}
+
+main{
+    max-width: 1000px;
+    margin-inline: auto;
+    margin-block: 10em;
+}
+
+h1{
+    font-size: 3em;
+    margin-block: 1em;
+}
+
+article{
+    font-size: calc(0.7em + 1.5vw);
+}
+article img{
+    width: 100%;
+    margin-block: 1em;
+
+    animation: reveal linear both;
+    animation-timeline: view(); /*The view() allows us to create a viewTimeline which instead of tracking the scroll offset of the scroll container, the tracks the relative positon of subject within a scrollport.
+    scroll container : box or element in which allows the scrolling. For eg, when the text is overflowing out of the size of container, by making the content scrollable, the container which allows text to scroll is scroll container.
+
+    scrollport : the viewport or visible part of the scroll container. or The view able part or screen visible to us is scrollport.
+
+    */
+}
+
+/* We can make a animation run before the animation timeline range finishes by using the method we used  in the above image but that's not very scalable. 
+Correct way we can do is by setting "animation-range" property. By default its value is:
+animation-range : normal normal; which is start and end animation range i.e 0% to 100%
+it can be written as different property like : 
+animation-start-range : normal
+animation-end-range : normal
+
+Check the usage in example 2 folder
+*/
+
+
+@keyframes grow-progress {
+    from{
+        width: 0;
+    }
+    to{
+        width: 100%;
+    }
+}
+
+@keyframes reveal {
+    from{
+        opacity: 0;
+        clip-path: inset(45% 20% 45% 20%);
+    }
+    50%{
+        opacity: 1;
+        clip-path: inset(0% 0% 0% 0%);
+    }
+}
+

@@ -1,0 +1,238 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  p {
+    margin-block-start: 1em;
+  }
+  
+  header,
+  footer {
+    text-align: center;
+  }
+  
+  header {
+    padding: var(--metric-box-spacing);
+    background-color: hsl(140deg 70% 95%);
+    font-size: 1.4em;
+  }
+  
+  main {
+    min-block-size: calc(100vh - 6em);
+  }
+  
+  main > article {
+    background-color: hsl(60deg 70% 95%);
+  }
+  
+  main aside {
+    background-color: hsl(0deg 70% 95%);
+  }
+  
+  footer {
+    padding: calc(var(--metric-box-spacing) / 2);
+    background-color: hsl(200deg 70% 95%);
+  }
+
+
+/* CSS grid is an excellent tool for applying a layout to your page. In the example, say you want a two-column layout once there's enough screen width available. To apply this two-column layout once the browser is wide enough, use a media query to define the grid styles above a specified breakpoint. */
+@media (min-width: 45em) {
+    main {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+
+/* Say you've got a page full of card components. The cards are never wider than 15em, and you want to put as many cards on one line as will fit. You could write media queries with breakpoints of 30em, 45em, 60em, and so on, but that's quite tedious and difficult to maintain.
+Instead, you can apply rules so that the cards themselves automatically take up the right amount of space. */
+.cards{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+    grid-gap: 1em;
+}
+
+
+.card{
+    border: 1px solid red;
+}
+
+
+.h1 h1{
+    font-family: Georgia, serif;
+    text-align: center;
+    font-weight: normal;
+    font-variant: small-caps;
+    letter-spacing: 0.1em;
+
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1em;
+}
+
+.h1 h1::before,
+.h1 h1::after{
+    content: '';
+    border-top: 0.1em double black;
+    align-self: center;
+}
+
+.media {
+    background-color: rgb(212, 212, 211);
+    margin: 2em;
+    padding: 2em;
+    display: flex;
+    align-items: center;
+    gap: 2em;
+}
+.media-illustration {
+    flex: 1;
+    max-inline-size: 200px;
+}
+.media-content {
+    flex: 3;
+}
+
+
+@media (min-width : 45em) {
+    .container-q{
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+    }
+}
+
+h5{
+    margin-inline: 2em;
+    font-size: 2em;
+}
+
+/* defining what elements are considered to be container(parent elements) for container query */
+section > section, section + aside{
+    container-type: inline-size;
+}
+
+@container (min-width : 30em){
+    section .media{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    section .media .media-illustration{
+        flex : 1;
+    }
+    section .media .media-content{
+        flex: 3;
+    }
+}
+
+/* The text will be responsive according to viewport width of screen */
+.text p:nth-child(1){
+    font-size: calc(0.7rem + 1.5vw);
+}
+
+
+/* Another way is by using clamp() : You probably don't want your text to shrink and grow to extremes. You can control where the scaling starts and ends using the CSS clamp() function. This “clamps” the scaling to a specific range.
+The clamp() function is like the calc() function but it takes three values. The middle value is the same as what you pass to calc(). The opening value specifies the minimum size, in this case 1rem so as to not go below the user's preferred font size. The closing value specifies the maximum size. */
+.text p:nth-child(2){
+    font-size: clamp(1rem, 0.7rem + 1.5vw, 2rem);
+}
+
+/* But you can stop text from getting too wide by limiting how wide the container can be. The max-inline-size property is perfect for this. */
+div article{
+    max-inline-size: 65ch;
+}
+
+/* use max-inline-size to declare that images can never be rendered at a size wider than their containing element.
+
+Adding a block-size value of auto means the browser preserves your images' aspect ratio as it resizes them.Unfortunately, this often means the browser has to squash or stretch the image to make it fit in the intended space.
+
+An object-fit value of contain tells the browser to preserve the image's aspect ratio, leaving empty space around the image if needed.
+
+An object-fit value of cover tells the browser to preserve the image's aspect ratio, cropping the image if needed.
+
+You can change the position of the image crop using the object-position property. This adjusts the focus of the crop, so you can make sure the most important part of the image is still visible.
+*/
+.images img{
+    max-inline-size: 100%;
+    block-size: auto;
+    aspect-ratio: 2/1;
+    object-fit: cover;
+    object-position: top right;
+}
+
+/* Checks the browser's theme and if it is dark it will apply below styles  */
+@media (prefers-color-scheme: dark){
+    .theming{
+        background-color: black;
+        color: white;
+    }
+
+    .theming input{
+        background-color: black;
+        color: white;
+        border-color: white;
+    }
+
+    .theming button{
+        background-color: white;
+        color: black;
+    }
+}
+
+/*Setting color like above for theming can a tedious task, so we can use custom properties and can use like this*/
+/*
+
+Here we are defining custom properties for normal theme
+html{
+    color-scheme : dark;
+    --page-color: white;
+    --ink-color: black;
+}
+
+And Here for dark theme
+@media (prefers-color-scheme: dark) {
+    html {
+        color-scheme : dark;
+      --page-color: black;
+      --ink-color: white;
+    }
+}
+
+Then using here the custom properties making work and life easier
+
+ body {
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    line-height: 1.55;
+    letter-spacing: 0.03ch;
+    background-color: var(--page-color);
+    color: var(--ink-color);
+  }
+  input {
+    font-size: 1rem;
+    background-color: var(--page-color);
+    color: var(--ink-color);
+    border-color: var(--ink-color);
+    border-radius: 2px;
+  }
+  button {
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    background-color: var(--ink-color);
+    color: var(--page-color);
+    text-transform: uppercase;
+    letter-spacing: 0.2ch;
+    border-radius: 2px;
+  }
+   */
+a:hover {
+    transform: scale(150%);
+}
+/* For those who do not like motions and animations */
+@media (prefers-reduced-motion: no-preference) {
+    a {
+        transition-duration: 0.4s;
+        transition-property: transform;
+    }
+}

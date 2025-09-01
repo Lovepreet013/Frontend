@@ -116,8 +116,7 @@ body{
 
     animation-delay: 1s;
 
-    transform: scale(0.5);   /* scale to 50% */
-    transform-origin: top; /* anchor scaling */
+    transform: scale(0.5) translateY(-100px);   /* scale to 50% */
 }
   
 /* (frames - 1) * frameWidth = 82 * 118 = 9676px */
@@ -146,7 +145,7 @@ section{
     max-width: 90%;
     opacity: 0;
 
-    animation: section-load 1.5s ease forwards;
+    animation: section-load 1s ease forwards;
     animation-delay: 2s;
 }
 
