@@ -454,3 +454,175 @@ console.log(firstUser)
 
 //a string literal has no methods of its own, but you can call the .toUpperCase() method on it thanks to the corresponding String object wrapper:
 console.log("this is lower".toUpperCase()) //This is called prototypal inheritance—inheriting properties and methods from a value's corresponding constructor.
+
+
+
+
+//Prototype : In addition to its own particular properties, any JavaScript object has an internal property which is a link (known as a reference) to another object called its prototype. When trying to access a property that does not exist in an object, JavaScript tries to find this property in the prototype of this object.
+
+const myOb = {
+    myProp : 2
+}
+
+//create another object using myOb as a prototype
+const another = Object.create(myOb)
+
+//create yetAnother using "another" object as a prototype
+const yetAnother = Object.create(another)
+
+console.log(yetAnother.myProp) // output : 2
+
+
+//Rpg objects
+class Character{
+    constructor(name, health, strength){
+        this.name = name
+        this.health = health
+        this.strength = strength
+        this.xp = 0 // XP is always zero for new characters
+    }
+
+    //Attack a target
+    attack(target){
+        if (this.health > 0){
+            const damage = this.strength
+            console.log( `${this.name} attacks ${target.name} and causes ${damage} damage points`)
+
+            target.health -= damage
+
+            if(target.health > 0){
+                console.log(`${target.name} has ${target.health} health points left`);
+            }else{
+                target.health = 0
+                const bonusXp = 10
+                console.log(`${this.name} eliminated ${target.name} and wins ${bonusXp} experience points`)
+                this.xp += bonusXp
+            }
+        }
+        else{
+            console.log(`${this.name} can't attack (they've been eliminated)`);
+        }
+    }
+
+    // Return the character description
+    describe() {
+        return `${this.name} has ${this.health} health points, ${this
+          .strength} as strength and ${this.xp} XP points`;
+    }
+}
+
+const aurora = new Character("Aurora", 150, 25);
+const glacius = new Character("Glacius", 130, 30);
+
+// console.log("Welcome to the adventure! Here are our heroes:");
+// console.log(aurora.describe());
+// console.log(glacius.describe());
+
+// const monster = new Character("Spike", 40, 20);
+// console.log("A wild monster has appeared: it's named " + monster.name);
+
+// monster.attack(aurora);
+// monster.attack(glacius);
+// aurora.attack(monster);
+// glacius.attack(monster);
+
+// console.log(aurora.describe());
+// console.log(glacius.describe());
+
+
+
+//Discover Functional Programming
+const movieList = [
+    {
+      title: "Batman",
+      year: 1989,
+      director: "Tim Burton",
+      imdbRating: 7.6
+    },
+    {
+      title: "Batman Returns",
+      year: 1992,
+      director: "Tim Burton",
+      imdbRating: 7.0
+    },
+    {
+      title: "Batman Forever",
+      year: 1995,
+      director: "Joel Schumacher",
+      imdbRating: 5.4
+    },
+    {
+      title: "Batman & Robin",
+      year: 1997,
+      director: "Joel Schumacher",
+      imdbRating: 3.7
+    },
+    {
+      title: "Batman Begins",
+      year: 2005,
+      director: "Christopher Nolan",
+      imdbRating: 8.3
+    },
+    {
+      title: "The Dark Knight",
+      year: 2008,
+      director: "Christopher Nolan",
+      imdbRating: 9.0
+    },
+    {
+      title: "The Dark Knight Rises",
+      year: 2012,
+      director: "Christopher Nolan",
+      imdbRating: 8.5
+    }
+];
+
+// imperative programming : In this paradigm, the programmer gives orders to the computer through a series of statements that modify the program state. Imperative programming focuses on describing how a program operates. In imperative programming, the state can be modified anywhere in the source code. This is convenient, but can also lead to nasty bugs and maintenance headaches. As a program grows in size and complexity, it becomes easier for the programmer to mutate a part of the state by mistake and harder to monitor state modifications.
+
+
+//Pure functions : Its outputs depend solely on its inputs and It has no side effect. Side effect is a change in program state or an interaction with the outside world. A database access or a console.log() statement are examples of side effects. By design, a pure function is independent from the program state and must not access it. Such a function must accept parameters in order to do something useful. The only way for a function without parameters to be pure is to return a constant value.
+
+const title = movies => {
+    // const titles = []
+    // for (const movie of movies){
+    //     title.push(movie.title)
+    // }
+
+    // return titles
+
+    //other way-----
+    return movies.map(movie => movie.title) //map returns array
+}
+
+const nolanMovies = movies => { //here we are not directly access state but using a parameter
+    // const nolanMovies = []
+    // for (const movie of movies){
+    //     if(movie.director === "Christopher Nolan"){
+    //         nolanMovies.push(movie)
+    //     }
+    // }
+
+    // return nolanMovies
+
+    //other way-----------
+    // Return a new array containing only movies by Christopher Nolan
+    return movies.filter(movie => movie.director === "Christopher Nolan");
+}
+
+const bestTitles = movies => {
+    const bestTitles = [];
+    for (const movie of movies) {
+      if (movie.imdbRating >= 7.5) {
+        bestTitles.push(movie.title);
+      }
+    }
+    return bestTitles;
+}
+
+const averageRating = movies => {
+    let ratingSum = 0;
+    for (const movie of movies) {
+      ratingSum += movie.imdbRating;
+    }
+    return ratingSum / movies.length;
+};
